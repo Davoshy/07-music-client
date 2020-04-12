@@ -1,65 +1,65 @@
 #albums {
-	display: grid;
-	grid-template-columns: repeat(auto-fill, 200px);
-	align-content: start;
-	grid-column-gap: 50px;
-	grid-row-gap: 50px;
-	padding: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 200px);
+  align-content: start;
+  grid-column-gap: 50px;
+  grid-row-gap: 50px;
+  padding: 50px;
 }
 
 #album {
-	padding: 50px;
-	display: grid;
-	grid-template-columns: 200px auto;
-	grid-column-gap: 50px;
+  padding: 50px;
+  display: grid;
+  grid-template-columns: 200px auto;
+  grid-column-gap: 50px;
 }
 
 #album .album h2 {
-	margin-top: 10px;
-	margin-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 #album .album span {
-	display: block;
-	margin-bottom: 10px;
+  display: block;
+  margin-bottom: 10px;
 }
 
 #album table tbody tr td:first-child {
-	padding-left: 0;
+  padding-left: 0;
 }
 
-@media () {
-	#albums {
-		height: ;
-		overflow-y: ;
-		grid-column-gap: ;
-		grid-row-gap: ;
-		padding: 10px;
-		box-sizing: border-box;
-		grid-template-columns: repeat(auto-fit, 160px);
-	}
-	#album {
-		grid-template-columns: ;
-		padding: 10px;
-		grid-template-rows: 120px auto;
-		max-height: calc(100vh - 60px);
-		box-sizing: border-box;
-		overflow-y: auto;
-	}
-	#album .album .cover {
-		width: 100px;
-		height: 100px;
-		display: inline-block;
-		margin-right: 20px;
-	}
-	#album .info {
-		display: inline-block;
-		vertical-align: top;
-	}
-	#album .info h2 {
-		font-size: 22px;
-	}
-	#album table > thead > tr > th:nth-child(4) {
-		display: none;
-	}
+@media (max-width: 480px) {
+  #albums {
+    height: calc(100vh - 59px);
+    overflow-y: auto;
+    grid-column-gap: 18px;
+    grid-row-gap: 25px;
+    padding: 15px;
+    box-sizing: border-box;
+    grid-template-columns: repeat(auto-fit, 160px);
+  }
+  #album {
+    grid-template-columns: ;
+    padding: 10px;
+    grid-template-rows: 120px auto;
+    max-height: calc(100vh - 60px);
+    box-sizing: border-box;
+    overflow-y: auto;
+  }
+  #album .album .cover {
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    margin-right: 20px;
+  }
+  #album .info {
+    display: inline-block;
+    vertical-align: top;
+  }
+  #album .info h2 {
+    font-size: 22px;
+  }
+  #album table > thead > tr > th:nth-child(4) {
+    display: none;
+  }
 }

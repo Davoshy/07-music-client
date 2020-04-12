@@ -1,37 +1,38 @@
-import React from 'react'
-import axios from 'axios'
+import React from "react";
+import axios from "axios";
 
-import '../styles/albums.css'
+import "../styles/albums.css";
 
-import Sidebar from '../components/Sidebar'
-import Album from '../components/Album'
+import Sidebar from "../components/Sidebar";
+import Album from "../components/Album";
 
 class Albums extends React.Component {
-	state = {
-		albums: []
-	}
-	componentWillMount() {
-		axios
-			.get(``)
-			.then(res => {
-				this.setState({})
-			})
-			.catch(err => {
-				console.log({ err })
-			})
-	}
-	render() {
-		return (
-			<div id="page">
-				<Sidebar page="albums" />
-				<div id="albums">
-					{this.state.albums.map(album => {
-						return <Album album={album} />
-					})}
-				</div>
-			</div>
-		)
-	}
+  state = {
+    albums: []
+  };
+  componentWillMount() {
+    axios
+      .get(`${process.env.REACT_APP_API}/albums`)
+      .then(res => {
+        console.log(res.data);
+        this.setState({ albums: res.data });
+      })
+      .catch(err => {
+        console.log({ err });
+      });
+  }
+  render() {
+    return (
+      <div id="page">
+        <Sidebar page="albums" />
+        <div id="albums">
+          {this.state.albums.map(album => {
+            return <Album album={album} />;
+          })}
+        </div>
+      </div>
+    );
+  }
 }
 
-export default Albums
+export default Albums;

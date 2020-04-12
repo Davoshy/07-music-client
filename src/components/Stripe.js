@@ -9,7 +9,35 @@ class Stripe extends React.Component {
 			type: ''
 		}
 	}
-	pay = () => {}
+	pay = () => {
+		this.props.stripe.createToken({}).then(token => {
+			console.log(token.data)
+			axios
+				.post(`${process.env.REACT_APP_API}/pay`, token)
+				.then(response => {
+					console.log(response.data)
+					if (response.data.status == 'succeeded') {
+						this.setState({
+							message: {
+								content: 'Payment successful. Thank you!',
+								type: 'success'
+							}
+						})
+						setTimeout(() => {
+							window.location = '/'
+						}, 2000)
+					} else {
+						this.setState({
+							message: {
+								content: response.data.code,
+								type: 'error'
+							}
+						})
+					}
+				})
+				.catch(error => console.log(error))
+		})
+	}
 	getMessageClass = () => {
 		if (!this.state.message.type) {
 			return ''
